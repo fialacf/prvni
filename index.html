@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TomFi – IT koordinátor Českého florbalu</title>
+  <meta name="description" content="TomFi (Tomáš Fiala) – IT koordinátor Českého florbalu. Pomůže s přihlášením, Microsoft 365, Teams, Outlookem a OneDrivem.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#1F3A5F">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Značka, že běží JavaScript (zapíná animace při posouvání, bez blikání obsahu) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- Sdílené ikony (florbalový míček a ikony karet) -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-ball" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" fill="currentColor"/>
+      <g fill="var(--ball-hole, #1F3A5F)">
+        <circle cx="50" cy="50" r="8"/>
+        <circle cx="50" cy="22" r="7"/><circle cx="74" cy="36" r="7"/><circle cx="74" cy="64" r="7"/>
+        <circle cx="50" cy="78" r="7"/><circle cx="26" cy="64" r="7"/><circle cx="26" cy="36" r="7"/>
+      </g>
+    </symbol>
+    <symbol id="i-teams" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.6-5.4A8.5 8.5 0 1 1 21 11.5Z"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8.5 10h7M8.5 13.5h4.5"/>
+    </symbol>
+    <symbol id="i-key" viewBox="0 0 24 24">
+      <circle cx="8" cy="15" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m11.2 11.8 8.3-8.3M16.5 6.5l2.5 2.5M14 9l2 2"/>
+    </symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="7.5" height="7.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <rect x="13.5" y="3" width="7.5" height="7.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <rect x="3" y="13.5" width="7.5" height="7.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-people" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 4.8a3.3 3.3 0 0 1 0 6.4M18.5 14.8c1.6.8 2.7 2.4 3 5.2"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <rect x="2.5" y="5" width="19" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m3.5 7 8.5 6.5L20.5 7"/>
+    </symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M7 19h10.5a4.5 4.5 0 0 0 .6-9A6.5 6.5 0 0 0 5.6 11 4 4 0 0 0 7 19Z"/>
+    </symbol>
+    <symbol id="i-help" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9.3 9.3a2.8 2.8 0 1 1 3.9 2.6c-.8.4-1.2 1-1.2 1.9v.4"/>
+      <circle cx="12" cy="17.2" r="1.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 2.5v2.6M12 18.9v2.6M21.5 12h-2.6M5.1 12H2.5M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8M18.7 18.7l-1.8-1.8M7.1 7.1 5.3 5.3"/>
+      <circle cx="12" cy="12" r="6.6" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M7.5 10.5v6M7.5 7.3v.1M11.5 16.5v-6M11.5 13c0-1.6 1.1-2.6 2.5-2.6s2.5 1 2.5 2.6v3.5"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
+    </symbol>
+    <symbol id="i-image" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="9" cy="9.5" r="1.8" fill="currentColor"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m3.5 17 5-4.5 4 3.5 3-2.5 5 4"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+
+  <!-- ===== Horní lišta ===== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="logo" href="#uvod" aria-label="TomFi – zpět na začátek">
+        <svg class="logo__ball" aria-hidden="true"><use href="#i-ball"/></svg>
+        <span>TomFi</span>
+      </a>
+      <nav class="nav" aria-label="Hlavní navigace">
+        <a href="#pomoc">S čím pomůžu</a>
+        <a href="#prace">Na čem pracuji</a>
+        <a href="#o-mne">O mně</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="pill pill--small" href="https://teams.microsoft.com/l/chat/0/0?users=fiala@ceskyflorbal.cz" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-teams"/></svg>
+        <span>Teams</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="obsah">
+
+    <!-- ===== 1. Úvod ===== -->
+    <section class="hero" id="uvod">
+      <svg class="hero__deco hero__deco--1" aria-hidden="true"><use href="#i-ball"/></svg>
+      <svg class="hero__deco hero__deco--2" aria-hidden="true"><use href="#i-ball"/></svg>
+      <svg class="hero__deco hero__deco--3" aria-hidden="true"><use href="#i-ball"/></svg>
+
+      <div class="hero__inner">
+        <div class="hero__avatar">
+          <img src="images/avatar-tomfi.svg" alt="Ilustrovaná postavička TomFiho s florbalkou a iniciálami TF na dresu" width="200" height="200">
+          <span class="hero__badge">IT</span>
+        </div>
+
+        <div class="hero__text">
+          <p class="hero__name">Tomáš Fiala</p>
+          <h1><span class="hero__nick">TomFi</span> – IT koordinátor Českého florbalu</h1>
+          <p class="hero__lead">Starám se o Microsoft 365 a automatizace, aby vám vše fungovalo.</p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--big" href="https://teams.microsoft.com/l/chat/0/0?users=fiala@ceskyflorbal.cz" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-teams"/></svg>
+              Ozvat se v Teams
+            </a>
+            <p class="hero__fallback">
+              Teams nejde? <a href="mailto:fiala@ceskyflorbal.cz">Napište mi e-mail</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__floor" aria-hidden="true">
+        <svg class="hero__rolling" aria-hidden="true"><use href="#i-ball"/></svg>
+      </div>
+    </section>
+
+    <!-- ===== 2. S čím vám pomůžu ===== -->
+    <section class="section" id="pomoc" aria-labelledby="pomoc-nadpis">
+      <div class="container">
+        <p class="kicker">Pomoc</p>
+        <h2 id="pomoc-nadpis">S čím vám pomůžu</h2>
+        <p class="section__lead">Nejde vám něco z tohohle? Nelamte si s tím hlavu a napište mi.</p>
+
+        <ul class="cards cards--help">
+          <li class="card reveal">
+            <span class="card__icon card__icon--red"><svg aria-hidden="true"><use href="#i-key"/></svg></span>
+            <h3>Přihlášení</h3>
+            <p>Zapomenuté heslo, zamčený účet, ověření v aplikaci Authenticator nebo nový telefon.</p>
+          </li>
+          <li class="card reveal">
+            <span class="card__icon card__icon--navy"><svg aria-hidden="true"><use href="#i-grid"/></svg></span>
+            <h3>Microsoft 365</h3>
+            <p>Účet, licence, instalace Office a nastavení na počítači i v mobilu.</p>
+          </li>
+          <li class="card reveal">
+            <span class="card__icon card__icon--red"><svg aria-hidden="true"><use href="#i-people"/></svg></span>
+            <h3>Teams</h3>
+            <p>Přihlášení, týmy a kanály, schůzky, kamera a mikrofon, přidání kolegů.</p>
+          </li>
+          <li class="card reveal">
+            <span class="card__icon card__icon--navy"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
+            <h3>Outlook</h3>
+            <p>Pošta, kalendář, sdílené schránky, podpis e-mailu a pošta v telefonu.</p>
+          </li>
+          <li class="card reveal">
+            <span class="card__icon card__icon--red"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span>
+            <h3>OneDrive</h3>
+            <p>Ukládání a sdílení souborů, synchronizace a obnovení smazaného dokumentu.</p>
+          </li>
+          <li class="card card--accent reveal">
+            <span class="card__icon card__icon--white"><svg aria-hidden="true"><use href="#i-help"/></svg></span>
+            <h3>Něco jiného?</h3>
+            <p>Nevíte, komu napsat? Napište mně – buď to vyřeším, nebo vás pošlu na správné místo.</p>
+            <a class="card__link" href="#kontakt">Jak se mi ozvat <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 3. Na čem pracuji ===== -->
+    <section class="section section--tinted" id="prace" aria-labelledby="prace-nadpis">
+      <div class="container">
+        <p class="kicker">Projekty</p>
+        <h2 id="prace-nadpis">Na čem pracuji</h2>
+        <p class="section__lead">Kromě pomoci s IT stavím automatizace, které šetří čas celému svazu.</p>
+
+        <div class="cards cards--projects">
+          <article class="project reveal">
+            <figure class="placeholder">
+              <svg aria-hidden="true"><use href="#i-image"/></svg>
+              <figcaption>Zde bude: snímek obrazovky automatizace Dostupnost</figcaption>
+            </figure>
+            <div class="project__body">
+              <p class="tag">Automatizace</p>
+              <h3>Dostupnost</h3>
+              <p>Přehled o tom, kdo z kolegů je kdy k dispozici – bez dohledávání v e-mailech a kalendářích. <span class="doplnit">[DOPLNIT: co přesně automatizace dělá a kde ji najdete]</span></p>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <figure class="placeholder">
+              <svg aria-hidden="true"><use href="#i-image"/></svg>
+              <figcaption>Zde bude: snímek obrazovky automatizace Boarding</figcaption>
+            </figure>
+            <div class="project__body">
+              <p class="tag">Automatizace</p>
+              <h3>Boarding</h3>
+              <p>Hladký nástup nových kolegů: účet, licence, Teams a přístupy připravené dřív, než poprvé přijdete do kanceláře. <span class="doplnit">[DOPLNIT: co vše Boarding zajišťuje]</span></p>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <figure class="placeholder">
+              <svg aria-hidden="true"><use href="#i-image"/></svg>
+              <figcaption>Zde bude: ilustrační obrázek k správě Microsoft 365</figcaption>
+            </figure>
+            <div class="project__body">
+              <p class="tag tag--navy">Správa</p>
+              <h3>Správa Microsoft 365</h3>
+              <p>Účty, licence, skupiny, týmy v Teams, sdílení a zabezpečení. Hlídám, aby vše běželo a data byla v bezpečí. <span class="doplnit">[DOPLNIT]</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. O mně ===== -->
+    <section class="section" id="o-mne" aria-labelledby="omne-nadpis">
+      <div class="container about">
+        <figure class="placeholder placeholder--photo reveal">
+          <svg aria-hidden="true"><use href="#i-image"/></svg>
+          <figcaption>Zde bude: fotka TomFiho u florbalu – z hřiště, z tribuny nebo s florbalkou v ruce</figcaption>
+        </figure>
+
+        <div class="about__text">
+          <p class="kicker">O mně</p>
+          <h2 id="omne-nadpis">Florbal, sport a technologie</h2>
+          <p>Sport mě provází odmalička a florbal je pro mě srdeční záležitost. <span class="doplnit">[DOPLNIT: jak vás florbal chytil, za koho fandíte nebo hrajete]</span></p>
+          <p>Na svazu propojuji dva světy – florbal a IT. Baví mě hledat cesty, jak si práci zjednodušit, a pomáhat lidem, aby technika nepřekážela, ale pomáhala. <span class="doplnit">[DOPLNIT]</span></p>
+
+          <blockquote class="motto reveal">
+            <svg class="motto__ball" aria-hidden="true"><use href="#i-ball"/></svg>
+            <p>„Není nikdy pozdě začít s něčím jiným.“</p>
+            <footer>Moje motto – ve sportu i v IT</footer>
+          </blockquote>
+
+          <p>Přesně tak se dívám i na techniku: nikdo nemusí všechno umět hned. Klidně se ptejte, žádná otázka není hloupá. <span class="doplnit">[DOPLNIT]</span></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="references reveal" aria-labelledby="reference-nadpis">
+          <h3 id="reference-nadpis">Co říkají kolegové <span class="doplnit">[DOPLNIT]</span></h3>
+          <div class="references__grid">
+            <div class="references__slot">Místo pro referenci od kolegy – citace, jméno a role.</div>
+            <div class="references__slot">Místo pro referenci od kolegy – citace, jméno a role.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. Kontakt ===== -->
+    <section class="section contact" id="kontakt" aria-labelledby="kontakt-nadpis">
+      <svg class="contact__deco" aria-hidden="true"><use href="#i-ball"/></svg>
+      <div class="container">
+        <p class="kicker kicker--light">Kontakt</p>
+        <h2 id="kontakt-nadpis">Jak se mi ozvat</h2>
+        <p class="section__lead">Nejrychleji mě zastihnete v Teams. Stačí krátká zpráva, co nefunguje.</p>
+
+        <div class="contact__grid">
+          <div class="contact__main reveal">
+            <span class="contact__step">1</span>
+            <h3>Napište mi v Teams</h3>
+            <p>Hlavní a nejrychlejší cesta. Otevře se chat přímo se mnou.</p>
+            <a class="btn btn--primary btn--big btn--full" href="https://teams.microsoft.com/l/chat/0/0?users=fiala@ceskyflorbal.cz" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-teams"/></svg>
+              Ozvat se v Teams
+            </a>
+          </div>
+
+          <div class="contact__side">
+            <div class="contact__card reveal">
+              <span class="contact__step contact__step--small">2</span>
+              <div>
+                <h3>Když vám nejde Teams, napište mi e-mail</h3>
+                <a class="contact__link" href="mailto:fiala@ceskyflorbal.cz">
+                  <svg aria-hidden="true"><use href="#i-mail"/></svg>
+                  fiala@ceskyflorbal.cz
+                </a>
+              </div>
+            </div>
+
+            <div class="contact__card reveal">
+              <span class="contact__icon"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></span>
+              <div>
+                <h3>LinkedIn</h3>
+                <!-- [DOPLNIT] Nahraďte href="#" adresou profilu, např. https://www.linkedin.com/in/vas-profil/ a smažte data-doplnit -->
+                <a class="contact__link" href="#" data-doplnit target="_blank" rel="noopener">
+                  Profil na LinkedIn <span class="doplnit">[DOPLNIT odkaz]</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>
+        <svg class="footer__ball" aria-hidden="true"><use href="#i-ball"/></svg>
+        © <span id="rok">2026</span> TomFi · IT Českého florbalu
+      </p>
+      <a href="#uvod">Zpět nahoru ↑</a>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

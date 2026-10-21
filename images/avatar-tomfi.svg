@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="avatar-title">
+  <title id="avatar-title">Ilustrovaná postavička TomFi s florbalkou a míčkem</title>
+  <!-- Zástupný avatar. Později ho můžete nahradit vlastní ilustrací se stejným názvem souboru. -->
+  <defs>
+    <clipPath id="kruh"><rect width="200" height="200"/></clipPath>
+  </defs>
+
+  <rect width="200" height="200" fill="#1F3A5F"/>
+
+  <g clip-path="url(#kruh)">
+    <!-- tečky v pozadí jako povrch míčku -->
+    <g fill="#ffffff" opacity=".08">
+      <circle cx="30" cy="40" r="6"/><circle cx="55" cy="22" r="6"/><circle cx="160" cy="30" r="6"/>
+      <circle cx="178" cy="62" r="6"/><circle cx="22" cy="80" r="6"/><circle cx="182" cy="110" r="6"/>
+    </g>
+
+    <!-- palubovka -->
+    <ellipse cx="100" cy="222" rx="150" ry="56" fill="#2B4E7E"/>
+
+    <!-- dres -->
+    <path d="M48 205 C48 152 70 128 100 128 C130 128 152 152 152 205 Z" fill="#E30613"/>
+    <path d="M86 129 L100 143 L114 129" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+    <text x="96" y="180" text-anchor="middle" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="28" fill="#ffffff">TF</text>
+
+    <!-- krk, uši a hlava -->
+    <rect x="91" y="110" width="18" height="22" rx="7" fill="#EDBB94"/>
+    <circle cx="70" cy="92" r="7" fill="#EDBB94"/>
+    <circle cx="130" cy="92" r="7" fill="#EDBB94"/>
+    <circle cx="100" cy="88" r="30" fill="#F6CDA8"/>
+
+    <!-- vlasy a čelenka -->
+    <path d="M70 86 C68 62 86 54 102 55 C120 56 134 68 130 88 C124 76 112 71 100 72 C88 72 77 77 70 86 Z" fill="#3B2A20"/>
+    <path d="M71 79 Q100 66 129 79" fill="none" stroke="#E30613" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- obličej -->
+    <circle cx="89" cy="91" r="3.4" fill="#1F3A5F"/>
+    <circle cx="111" cy="91" r="3.4" fill="#1F3A5F"/>
+    <path d="M88 101 Q100 111 112 101" fill="none" stroke="#1F3A5F" stroke-width="3.4" stroke-linecap="round"/>
+    <circle cx="82" cy="100" r="4" fill="#E30613" opacity=".18"/>
+    <circle cx="118" cy="100" r="4" fill="#E30613" opacity=".18"/>
+
+    <!-- florbalka -->
+    <line x1="160" y1="40" x2="119" y2="176" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+    <line x1="160" y1="40" x2="151" y2="70" stroke="#16263D" stroke-width="8" stroke-linecap="round"/>
+    <path d="M122 168 C113 181 97 186 80 182 L82 173 C96 176 108 173 116 164 Z" fill="#ffffff"/>
+
+    <!-- ruce -->
+    <path d="M136 152 L138 120" stroke="#E30613" stroke-width="15" stroke-linecap="round"/>
+    <path d="M66 156 Q96 168 124 152" fill="none" stroke="#E30613" stroke-width="15" stroke-linecap="round"/>
+    <circle cx="138" cy="116" r="8" fill="#F6CDA8"/>
+    <circle cx="126" cy="150" r="8" fill="#F6CDA8"/>
+
+    <!-- míček s dírkami -->
+    <g transform="translate(64 184)">
+      <circle r="12" fill="#ffffff"/>
+      <g fill="#1F3A5F">
+        <circle r="2.4"/><circle cx="0" cy="-7" r="2.2"/><circle cx="6" cy="-3.5" r="2.2"/>
+        <circle cx="6" cy="3.5" r="2.2"/><circle cx="0" cy="7" r="2.2"/><circle cx="-6" cy="3.5" r="2.2"/>
+        <circle cx="-6" cy="-3.5" r="2.2"/>
+      </g>
+    </g>
+  </g>
+
+</svg>
